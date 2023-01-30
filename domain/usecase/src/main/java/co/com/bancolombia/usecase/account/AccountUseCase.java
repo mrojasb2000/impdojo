@@ -8,7 +8,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 public class AccountUseCase {
-    private AccountRepository accountRepository;
+    private final AccountRepository accountRepository;
 
     public List<Account> getAccounts(){
         return accountRepository.getAccounts();
