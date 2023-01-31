@@ -23,3 +23,8 @@ management:
     health:
       probes:
         enabled: true
+mongoConfig:
+  user: root
+  password: dojoclean123
+  connectionString: mongodb://root:dojoclean123@127.0.0.1:27017
+  database: D2B

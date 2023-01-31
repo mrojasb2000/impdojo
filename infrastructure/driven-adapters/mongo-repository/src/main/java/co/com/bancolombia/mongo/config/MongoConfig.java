@@ -1,6 +1,5 @@
 package co.com.bancolombia.mongo.config;
 
-import co.com.bancolombia.mongo.config.MongoDBSecret;
 import org.springframework.boot.autoconfigure.mongo.MongoClientFactory;
 import org.springframework.boot.autoconfigure.mongo.MongoClientSettingsBuilderCustomizer;
 import org.springframework.boot.autoconfigure.mongo.MongoProperties;
