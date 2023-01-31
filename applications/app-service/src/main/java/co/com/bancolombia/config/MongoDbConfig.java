@@ -8,6 +8,7 @@ import com.mongodb.client.MongoClients;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -17,16 +18,27 @@ import java.util.Collections;
 @EnableMongoRepositories(basePackages = "co.com.bancolombia.mongo")
 public class MongoDbConfig extends AbstractMongoClientConfiguration {
 
-    //private final List<Converter<?, ?>> converters = new ArrayList<Converter<?, ?>>();
+    @Value("${mongoConfig.user}")
+    private String dbUser;
+
+    @Value("${mongoConfig.password}")
+    private String dbPassword;
+
+    @Value("${mongoConfig.database}")
+    private String dbName;
+
+    @Value("${mongoConfig.connectionString}")
+    private String dbConnectionString;
+
 
     @Override
     protected String getDatabaseName() {
-        return "D2B";
+        return dbName;
     }
 
     @Override
     public MongoClient mongoClient() {
-        final ConnectionString connectionString = new ConnectionString("mongodb://root:dojoclean123@127.0.0.1:27017");
+        final ConnectionString connectionString = new ConnectionString(dbConnectionString);
         final MongoClientSettings mongoClientSettings = MongoClientSettings.builder()
                 .applyConnectionString(connectionString)
                 .build();

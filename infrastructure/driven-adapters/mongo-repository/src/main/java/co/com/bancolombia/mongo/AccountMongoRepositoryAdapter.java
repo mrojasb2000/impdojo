@@ -4,7 +4,6 @@ import co.com.bancolombia.model.account.Account;
 import co.com.bancolombia.model.account.gateways.AccountRepository;
 import co.com.bancolombia.mongo.helper.AdapterOperations;
 import org.reactivecommons.utils.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,7 +18,7 @@ implements AccountRepository
          *  super(repository, mapper, d -> mapper.mapBuilder(d,ObjectModel.ObjectModelBuilder.class).build());
          *  Or using mapper.map with the class of the object model
          */
-        super(repository, mapper, d -> mapper.map(d, Account.class));
+        super(repository, mapper, d -> mapper.mapBuilder(d, Account.AccountBuilder.class).build());
     }
 
     @Override

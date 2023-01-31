@@ -1,18 +1,14 @@
 package co.com.bancolombia.mongo;
 
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
-@Document(collection = "accounts")
-@Getter
-@Setter
+@Data
 @Builder(toBuilder = true)
+@Document(collection = "accounts")
 public class AccountDTO {
-    @Field("_id")
-    private int id;
     @Field("accountNumber")
     private int accountNumber;
     @Field("accountType")
